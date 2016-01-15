@@ -30,9 +30,9 @@ controller.hears(['hello','hi'],'direct_message,direct_mention,mention',function
 
   controller.storage.users.get(message.user,function(err, user) {
     if (user && user.name) {
-      bot.reply(message,'Hello ' + user.name + '!!');
+      bot.reply(message,'hello' + user.name + '!!');
     } else {
-      bot.reply(message,'Hello.');
+      bot.reply(message,'hey mate');
     }
   });
 });
@@ -48,7 +48,7 @@ controller.hears(['call me (.*)'],'direct_message,direct_mention,mention',functi
     }
     user.name = name;
     controller.storage.users.save(user,function(err, id) {
-      bot.reply(message,'Got it mate. I will call you ' + user.name + ' from now on.');
+      bot.reply(message,'got it mate. i\'ll call you ' + user.name + ' from now on.');
     });
   });
 });
@@ -56,9 +56,9 @@ controller.hears(['call me (.*)'],'direct_message,direct_mention,mention',functi
 controller.hears(['what is my name','who am i'],'direct_message,direct_mention,mention',function(bot, message) {
   controller.storage.users.get(message.user,function(err, user) {
     if (user && user.name) {
-      bot.reply(message,'Your name is ' + user.name);
+      bot.reply(message,'ur name is ' + user.name);
     } else {
-      bot.reply(message,'I don\'t know yet!');
+      bot.reply(message,'i don\'t know yet!');
     }
   });
 });
@@ -68,10 +68,10 @@ controller.hears(['pug me'],'direct_message,direct_mention,mention',function(bot
   request
     .get('http://pugme.herokuapp.com/random')
     .end(function(err, res) {
-      bot.reply(res.body.pug);
+      bot.reply(message, res.body.pug);
     });
 });
 
 controller.hears(['identify yourself','who are you','what is your name'],'direct_message,direct_mention,mention',function(bot, message) {
-  bot.reply(message,'I am Jemson mate. :jemson:');
+  bot.reply(message,'i am Jemson mate. :jemson:');
 });
