@@ -26,13 +26,13 @@ controller.on('ambient',function(bot,message) {
   if (message.user == 'slackbot') {
     switch(_.random(1, 4)) {
       case 1:
-        bot.reply(message,'@slackbot please don\'t talk');
+        bot.reply(message,'slackbot, please don\'t talk');
         break;
       case 2:
         bot.reply(message,'this guy...');
         break;
       case 3:
-        bot.reply(message,'@slackbot what are you on about?');
+        bot.reply(message,'slackbot, mate, what are you on about?');
         break;
       case 4:
         break;
