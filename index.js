@@ -162,7 +162,7 @@ controller.hears(['can i ask you a question', 'answer please', 'answer plz', 'ca
 
 });
 
-controller.hears(['slackbot'],'direct_message,direct_mention,mention',function(bot, message) {
+controller.hears(['slackbot'],['direct_message','direct_mention','mention','ambient'],function(bot, message) {
   switch(_.random(1, 4)) {
     case 1:
       bot.reply(message,'@slackbot please don\'t talk');
@@ -175,7 +175,8 @@ controller.hears(['slackbot'],'direct_message,direct_mention,mention',function(b
       break;
     case 4:
       break;
-  });
+  }
+});
 
 controller.hears(['identify yourself','who are you','what is your name'],'direct_message,direct_mention,mention',function(bot, message) {
   bot.reply(message,'i am Jemson mate. :jemson:');
