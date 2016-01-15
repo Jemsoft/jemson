@@ -122,7 +122,7 @@ controller.hears(['can i ask you a question', 'answer please', 'answer plz', 'ca
   bot.startConversation(message, function(err,convo) {
     convo.ask('shoot',function(response,convo) {
       ai.ask(response.text, function(err, res) {
-        convo.say(response.text);
+        convo.say(res);
         convo.next();
       });
     });
