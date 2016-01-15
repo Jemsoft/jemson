@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "botkit": "0.0.5",
-    "superagent": "^1.6.1"
+    "superagent": "^1.6.1",
+    "underscore": "^1.8.3"
   }
 }

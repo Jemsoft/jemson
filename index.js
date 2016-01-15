@@ -6,6 +6,7 @@ if (!process.env.token) {
 var Botkit = require('botkit');
 var os = require('os');
 var request = require('superagent');
+var _ = require('underscore');
 
 var controller = Botkit.slackbot({
   debug: true,
@@ -30,9 +31,22 @@ controller.hears(['hello','hi'],'direct_message,direct_mention,mention',function
 
   controller.storage.users.get(message.user,function(err, user) {
     if (user && user.name) {
-      bot.reply(message,'hello' + user.name + '!!');
+      bot.reply(message, 'hello' + user.name + '!!');
     } else {
-      bot.reply(message,'hey mate');
+      switch(_.random(1, 4)) {
+        case 1:
+          bot.reply(message,'hey mate');
+          break;
+        case 2:
+          bot.reply(message,'\'sup mate?');
+          break;
+        case 3:
+          bot.reply(message,'what is going on?');
+          break;
+        case 4:
+          bot.reply(message,'yo');
+          break;
+      };
     }
   });
 });
