@@ -165,13 +165,13 @@ controller.hears(['can i ask you a question', 'answer please', 'answer plz', 'ca
 controller.hears(['slackbot'],['direct_message','direct_mention','mention','ambient'],function(bot, message) {
   switch(_.random(1, 4)) {
     case 1:
-      bot.reply(message,'@slackbot please don\'t talk');
+      bot.reply(message,'pfffffff');
       break;
     case 2:
       bot.reply(message,'this guy...');
       break;
     case 3:
-      bot.reply(message,'@slackbot what are you on about?');
+      bot.reply(message,'why????');
       break;
     case 4:
       break;
