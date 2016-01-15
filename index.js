@@ -80,15 +80,29 @@ controller.hears(['animate me (.*)', 'animate me'],'direct_message,direct_mentio
     query = query.split(' ').join('+');
   }
   if (query) {
-    request
-      .get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC&limit=1&offset=0')
-      .end(function(err, res) {
-        if (res.body.data[0]) {
-          bot.reply(message, res.body.data[0].images.original.url);
-        } else {
-          bot.reply(message, 'what\'s that mate?');
-        }
-      });
+    switch(_.random(1, 2)) {
+      case 1:
+        request
+          .get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC&limit=1&offset=0')
+          .end(function(err, res) {
+            if (res.body.data[0]) {
+              bot.reply(message, res.body.data[0].images.original.url);
+            } else {
+              bot.reply(message, 'what\'s that mate?');
+            }
+          });
+        break;
+      case 2:
+        .get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + query)
+          .end(function(err, res) {
+            if (res.body.data) {
+              bot.reply(message, res.body.data.image_url);
+            } else {
+              bot.reply(message, 'what\'s that mate?');
+            }
+          });
+        break;
+    };
   } else {
     request
       .get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=crocodile')
