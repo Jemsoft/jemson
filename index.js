@@ -55,7 +55,10 @@ controller.hears(['call me (.*)'],'direct_message,direct_mention,mention',functi
 
 controller.hears(['animate me (.*)', 'animate me'],'direct_message,direct_mention,mention',function(bot, message) {
   var matches = message.text.match(/animate me (.*)/i);
-  var query = matches[1];
+  var query;
+  if (matches) {
+    query = matches[1];
+  }
   if (query) {
     request
       .get('http://api.giphy.com/v1/gifs/search?q=' + '&api_key=dc6zaTOxFJmzC&limit=1&offset=0')
