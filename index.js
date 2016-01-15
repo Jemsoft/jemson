@@ -186,7 +186,7 @@ controller.hears(['^talk to me$'],['direct_message','direct_mention','mention'],
 
   bot.startConversation(message, function(err,convo) {
     convo.ask('ok',function(response,convo) {
-      ask(convo, reponse.text);
+      ask(convo, response.text);
     });
   })
 
