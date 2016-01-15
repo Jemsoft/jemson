@@ -196,9 +196,9 @@ function ask(convo, res) {
   if (res === 'done' || res === 'bye' || res === 'enough') {
     convo.next();
   } else {
-    ai.ask(res.text, function(err, ans) {
+    ai.ask(res, function(err, ans) {
       convo.ask(ans.toLowerCase(), function(response, con) {
-        ask(con, response);
+        ask(con, response.text);
       });
     });
   }
