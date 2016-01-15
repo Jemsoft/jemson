@@ -183,22 +183,22 @@ controller.hears(['identify yourself','who are you','what is your name'],'direct
 });
 
 controller.hears(['^talk to me$'],['direct_message','direct_mention','mention'], function(bot, message) {
-
-  bot.startConversation(message, function(err,convo) {
-    convo.ask('ok',function(response,convo) {
-      ask(convo, response.text);
-    });
-  })
-
+  bot.startConversation(message, ask);
 });
 
-function ask(convo, res) {
-  if (res === 'done' || res === 'bye' || res === 'enough') {
+
+function ask(response, convo) {
+if (!response) {
+response = {
+text: 'hi',
+};}
+  if (response.text === 'done' || response.text === 'bye' || response.text === 'enough') {
     convo.next();
   } else {
-    ai.ask(res, function(err, ans) {
-      convo.ask(ans.toLowerCase(), function(response, con) {
-        ask(con, response.text);
+    ai.ask(response.text, function(err, ans) {
+convo.next();
+      convo.ask(ans.toLowerCase(), function(response, convo) {
+        ask(response, convo);
       });
     });
   }
