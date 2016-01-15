@@ -132,7 +132,7 @@ controller.hears(['pug me'],'direct_message,direct_mention,mention',function(bot
     });
 });
 
-controller.hears(['can i ask you a question', 'answer please', 'answer plz', 'can i ask u something', 'can i ask u a question', 'yo'],['direct_message','direct_mention','mention'], function(bot, message) {
+controller.hears(['can i ask you a question', 'answer please', 'answer plz', 'can i ask u something', 'can i ask u a question', '^yo$'],['direct_message','direct_mention','mention'], function(bot, message) {
 
   bot.startConversation(message, function(err,convo) {
     convo.ask('shoot',function(response,convo) {
