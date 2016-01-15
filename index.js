@@ -67,7 +67,6 @@ controller.hears(['what is my name','who am i'],'direct_message,direct_mention,m
 controller.hears(['pug me'],'direct_message,direct_mention,mention',function(bot, message) {
   request
     .get('http://pugme.herokuapp.com/random')
-    .use(nocache)
     .end(function(err, res) {
       bot.reply(res.body.pug);
     });

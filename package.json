@@ -7,6 +7,7 @@
   "author": "Jemsoft Pty Ltd.",
   "license": "MIT",
   "dependencies": {
-    "botkit": "0.0.5"
+    "botkit": "0.0.5",
+    "superagent": "^1.6.1"
   }
 }
