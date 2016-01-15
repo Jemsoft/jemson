@@ -72,6 +72,10 @@ controller.hears(['pug me'],'direct_message,direct_mention,mention',function(bot
     });
 });
 
+controller.hears(['slackbot'],'direct_message,direct_mention,mention',function(bot, message) {
+  bot.reply(message, 'ewwww!!');
+});
+
 controller.hears(['identify yourself','who are you','what is your name'],'direct_message,direct_mention,mention',function(bot, message) {
   bot.reply(message,'i am Jemson mate. :jemson:');
 });
