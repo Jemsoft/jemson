@@ -58,10 +58,11 @@ controller.hears(['animate me (.*)', 'animate me'],'direct_message,direct_mentio
   var query;
   if (matches) {
     query = matches[1];
+    query = query.split(' ').join('+');
   }
   if (query) {
     request
-      .get('http://api.giphy.com/v1/gifs/search?q=' + '&api_key=dc6zaTOxFJmzC&limit=1&offset=0')
+      .get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC&limit=1&offset=0')
       .end(function(err, res) {
         bot.reply(message, res.body.data[0].images.original.url);
       });
