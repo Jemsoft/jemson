@@ -188,15 +188,16 @@ controller.hears(['^talk to me$'],['direct_message','direct_mention','mention'],
 
 
 function ask(response, convo) {
-if (!response) {
-response = {
-text: 'hi',
-};}
+  if (!response) {
+    response = {
+      text: 'hi',
+    };
+  }
   if (response.text === 'done' || response.text === 'bye' || response.text === 'enough') {
     convo.next();
   } else {
     ai.ask(response.text, function(err, ans) {
-convo.next();
+      convo.next();
       convo.ask(ans.toLowerCase(), function(response, convo) {
         ask(response, convo);
       });
