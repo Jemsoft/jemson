@@ -181,3 +181,25 @@ controller.hears(['slackbot'],['direct_message','direct_mention','mention','ambi
 controller.hears(['identify yourself','who are you','what is your name'],'direct_message,direct_mention,mention',function(bot, message) {
   bot.reply(message,'i am Jemson mate. :jemson:');
 });
+
+controller.hears(['let\'s talk'],['direct_message','direct_mention','mention'], function(bot, message) {
+
+  bot.startConversation(message, function(err,convo) {
+    convo.ask('ok',function(response,convo) {
+      ask(convo, reponse.text);
+    });
+  })
+
+});
+
+function ask(convo, res) {
+  if (res === 'done' || res === 'bye' || res === 'enough') {
+    convo.next();
+  } else {
+    ai.ask(response.text, function(err, res) {
+      convo.ask(res.toLowerCase(), function(response, con) {
+        ask(con, response);
+      });
+    });
+  }
+}
