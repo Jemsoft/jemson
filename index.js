@@ -7,6 +7,12 @@ var Botkit = require('botkit');
 var os = require('os');
 var request = require('superagent');
 var _ = require('underscore');
+var cleverbot = require('cleverbot.io');
+var ai = new cleverbot('pE2lolJyq7JT8YJo', '8ogz07dXwATDK2siONxNywrHK3hoZJfi');
+ai.setNick('jemson');
+ai.create(function (err, session) {
+  console.log(err);
+});
 
 var controller = Botkit.slackbot({
   debug: true,
@@ -28,10 +34,9 @@ controller.hears(['hello','hi'],'direct_message,direct_mention,mention',function
     }
   });
 
-
   controller.storage.users.get(message.user,function(err, user) {
     if (user && user.name) {
-      bot.reply(message, 'hello' + user.name + '!!');
+      bot.reply(message, 'hello ' + user.name + '!!');
     } else {
       switch(_.random(1, 4)) {
         case 1:
@@ -110,6 +115,19 @@ controller.hears(['pug me'],'direct_message,direct_mention,mention',function(bot
     .end(function(err, res) {
       bot.reply(message, res.body.pug);
     });
+});
+
+controller.hears(['can i ask you a question', 'answer please', 'answer plz', 'can i ask u something', 'can i ask u a question', 'yo'],['direct_message','direct_mention','mention'], function(bot, message) {
+
+  bot.startConversation(message, function(err,convo) {
+    convo.ask('shoot',function(response,convo) {
+      ai.ask(response.text, function(err, res) {
+        convo.say(response.text);
+        convo.next();
+      });
+    });
+  })
+
 });
 
 controller.hears(['slackbot'],'direct_message,direct_mention,mention',function(bot, message) {
