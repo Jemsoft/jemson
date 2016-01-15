@@ -1,0 +1,12 @@
+{
+  "name": "jemson",
+  "version": "0.0.1",
+  "description": "Name's Jemson, mate.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Jemsoft Pty Ltd.",
+  "license": "MIT",
+  "dependencies": {
+    "botkit": "0.0.5"
+  }
+}
