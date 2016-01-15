@@ -64,7 +64,11 @@ controller.hears(['animate me (.*)', 'animate me'],'direct_message,direct_mentio
     request
       .get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC&limit=1&offset=0')
       .end(function(err, res) {
-        bot.reply(message, res.body.data[0].images.original.url);
+        if (res.body.data[0]) {
+          bot.reply(message, res.body.data[0].images.original.url);
+        } else {
+          bot.reply(message, 'what\'s that mate?');
+        }
       });
   } else {
     request
