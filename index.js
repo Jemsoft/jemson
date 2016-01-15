@@ -194,6 +194,7 @@ function ask(response, convo) {
     };
   }
   if (response.text === 'done' || response.text === 'bye' || response.text === 'enough') {
+    convo.say('ok, no drama');
     convo.next();
   } else {
     ai.ask(response.text, function(err, ans) {
