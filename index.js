@@ -38,9 +38,62 @@ controller.on('ambient',function(bot,message) {
         break;
     };
   }
+  if (_.random(1, 5) === 1) {
+    bot.api.reactions.add({
+      timestamp: message.ts,
+      channel: message.channel,
+      name: 'jemson',
+    },function(err, res) {
+      if (err) {
+        bot.botkit.log('Failed to add emoji reaction :(',err);
+      }
+    });
+  } 
+  if (_.random(1, 5) === 1) {
+    bot.api.reactions.add({
+      timestamp: message.ts,
+      channel: message.channel,
+      name: 'jem',
+    },function(err, res) {
+      if (err) {
+        bot.botkit.log('Failed to add emoji reaction :(',err);
+      }
+    });
+  } 
+  if (_.random(1, 5) === 1) {
+    bot.api.reactions.add({
+      timestamp: message.ts,
+      channel: message.channel,
+      name: 'panda_face',
+    },function(err, res) {
+      if (err) {
+        bot.botkit.log('Failed to add emoji reaction :(',err);
+      }
+    });
+  } 
+  if (_.random(1, 5) === 1) {
+    bot.api.reactions.add({
+      timestamp: message.ts,
+      channel: message.channel,
+      name: 'octocat',
+    },function(err, res) {
+      if (err) {
+        bot.botkit.log('Failed to add emoji reaction :(',err);
+      }
+    });
+  } 
+  if (_.random(1, 30) === 1) {
+    convo.say('i am the KING!!!');
+  } 
+  if (_.random(1, 30) === 1) {
+    convo.say('i am the BEST!!!');
+  } 
+  if (_.random(1, 20) === 1) {
+    convo.say('you what mate?');
+  } 
 });
 
-controller.hears(['hello','hi'],'direct_message,direct_mention,mention',function(bot, message) {
+controller.hears(['hello','^hi$'],'direct_message,direct_mention,mention',function(bot, message) {
   bot.api.reactions.add({
     timestamp: message.ts,
     channel: message.channel,
