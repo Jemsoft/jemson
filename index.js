@@ -22,6 +22,24 @@ var bot = controller.spawn({
   token: process.env.token
 }).startRTM();
 
+controller.on('channel_joined',function(bot,message) {
+    switch(_.random(1, 3)) {
+      case 1:
+        bot.reply(message,'hey what\'s up homies?');
+        break;
+      case 2:
+        bot.reply(message,'hey guys! guess who\'s here :jemson:');
+        break;
+      case 3:
+        bot.reply(message,'slackbot, mate, move over.');
+        break;
+    };
+});
+
+controller.on('channel_join',function(bot,message) {
+  bot.reply(message,'welcome!! :jem:');
+});
+
 controller.on('ambient',function(bot,message) {
   if (message.user == 'slackbot') {
     switch(_.random(1, 4)) {
@@ -38,6 +56,17 @@ controller.on('ambient',function(bot,message) {
         break;
     };
   }
+  if (_.random(1, 5) === 1) {
+    bot.api.reactions.add({
+      timestamp: message.ts,
+      channel: message.channel,
+      name: 'octocat',
+    },function(err, res) {
+      if (err) {
+        bot.botkit.log('Failed to add emoji reaction :(',err);
+      }
+    });
+  } 
   if (_.random(1, 5) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
@@ -82,14 +111,14 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 30) === 1) {
-    convo.say('i am the KING!!!');
+  if (_.random(1, 100) === 1) {
+    bot.reply(message, 'i am the KING!!!');
   } 
+  if (_.random(1, 100) === 1) {
+    bot.reply(message, 'Jemson\'s da BEST!!!');
+  }
   if (_.random(1, 30) === 1) {
-    convo.say('i am the BEST!!!');
-  } 
-  if (_.random(1, 20) === 1) {
-    convo.say('you what mate?');
+    bot.reply(message, 'you what mate?');
   } 
 });
 
