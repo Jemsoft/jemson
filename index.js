@@ -182,7 +182,7 @@ controller.hears(['identify yourself','who are you','what is your name'],'direct
   bot.reply(message,'i am Jemson mate. :jemson:');
 });
 
-controller.hears(['let\'s talk'],['direct_message','direct_mention','mention'], function(bot, message) {
+controller.hears(['^talk to me$'],['direct_message','direct_mention','mention'], function(bot, message) {
 
   bot.startConversation(message, function(err,convo) {
     convo.ask('ok',function(response,convo) {
