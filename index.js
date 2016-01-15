@@ -93,7 +93,8 @@ controller.hears(['animate me (.*)', 'animate me'],'direct_message,direct_mentio
           });
         break;
       case 2:
-        .get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + query)
+        request
+          .get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + query)
           .end(function(err, res) {
             if (res.body.data) {
               bot.reply(message, res.body.data.image_url);
