@@ -264,6 +264,10 @@ controller.hears(['identify yourself','who are you','what is your name'],'direct
   bot.reply(message,'i am Jemson mate. :jemson:');
 });
 
+controller.hears(['^thanks$','thank you'],'direct_message,direct_mention,mention',function(bot, message) {
+  bot.reply(message,'no worries mate!');
+});
+
 controller.hears(['^talk to me$'],['direct_message','direct_mention','mention'], function(bot, message) {
   bot.startConversation(message, ask);
 });
