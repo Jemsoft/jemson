@@ -41,6 +41,7 @@ controller.on('channel_join',function(bot,message) {
 });
 
 controller.on('ambient',function(bot,message) {
+  console.log(message.user);
   if (message.user == 'slackbot') {
     switch(_.random(1, 4)) {
       case 1:
@@ -56,7 +57,7 @@ controller.on('ambient',function(bot,message) {
         break;
     };
   }
-  if (_.random(1, 5) === 1) {
+  if (_.random(1, 15) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -67,7 +68,7 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 5) === 1) {
+  if (_.random(1, 15) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -78,7 +79,7 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 5) === 1) {
+  if (_.random(1, 15) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -89,7 +90,7 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 5) === 1) {
+  if (_.random(1, 15) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -111,13 +112,13 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 100) === 1) {
+  if (_.random(1, 500) === 1) {
     bot.reply(message, 'i am the KING!!!');
   } 
-  if (_.random(1, 100) === 1) {
+  if (_.random(1, 500) === 1) {
     bot.reply(message, 'Jemson\'s da BEST!!!');
   }
-  if (_.random(1, 30) === 1) {
+  if (_.random(1, 100) === 1) {
     bot.reply(message, 'you what mate?');
   } 
 });
