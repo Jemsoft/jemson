@@ -41,7 +41,7 @@ controller.on('channel_join',function(bot,message) {
 });
 
 controller.on('ambient',function(bot,message) {
-  console.log(message.user);
+  console.log(message);
   if (message.user == 'slackbot') {
     switch(_.random(1, 4)) {
       case 1:
@@ -57,17 +57,7 @@ controller.on('ambient',function(bot,message) {
         break;
     };
   }
-  if (_.random(1, 15) === 1) {
-    bot.api.reactions.add({
-      timestamp: message.ts,
-      channel: message.channel,
-      name: 'octocat',
-    },function(err, res) {
-      if (err) {
-        bot.botkit.log('Failed to add emoji reaction :(',err);
-      }
-    });
-  } 
+
   if (_.random(1, 15) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
@@ -79,7 +69,7 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 15) === 1) {
+  if (_.random(1, 20) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -90,7 +80,7 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 15) === 1) {
+  if (_.random(1, 20) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -101,7 +91,7 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 5) === 1) {
+  if (_.random(1, 20) === 1) {
     bot.api.reactions.add({
       timestamp: message.ts,
       channel: message.channel,
@@ -112,10 +102,10 @@ controller.on('ambient',function(bot,message) {
       }
     });
   } 
-  if (_.random(1, 500) === 1) {
+  if (_.random(1, 100) === 1) {
     bot.reply(message, 'i am the KING!!!');
   } 
-  if (_.random(1, 500) === 1) {
+  if (_.random(1, 100) === 1) {
     bot.reply(message, 'Jemson\'s da BEST!!!');
   }
   if (_.random(1, 100) === 1) {
@@ -156,6 +146,27 @@ controller.hears(['hello','^hi$'],'direct_message,direct_mention,mention',functi
   });
 });
 
+
+controller.hears(['say hi to (.*)', 'say hello to (.*)'],'direct_message,direct_mention,mention',function(bot, message) {
+  var matches = message.text.match(/say hi to (.*)/i);
+  var name = matches[1];
+if (!name) {
+
+  matches = message.text.match(/say hello to (.*)/i);
+name = matches[1];
+}
+  bot.api.reactions.add({
+    timestamp: message.ts,
+    channel: message.channel,
+    name: 'jem',
+  },function(err, res) {
+    if (err) {
+      bot.botkit.log('Failed to add emoji reaction :(',err);
+    }
+  });
+
+bot.reply(message, 'hello ' + name + '!!');
+});
 controller.hears(['call me (.*)'],'direct_message,direct_mention,mention',function(bot, message) {
   var matches = message.text.match(/call me (.*)/i);
   var name = matches[1];
