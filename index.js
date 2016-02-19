@@ -105,6 +105,10 @@ controller.on('ambient',function(bot,message) {
   if (_.random(1, 100) === 1) {
     bot.reply(message, 'i am the KING!!!');
   } 
+
+  if (_.random(1, 50) === 1) {
+    bot.reply(message, 'http://www.ancestry.com.au/name-origin?surname=jemson');
+  } 
   if (_.random(1, 100) === 1) {
     bot.reply(message, 'Jemson\'s da BEST!!!');
   }
